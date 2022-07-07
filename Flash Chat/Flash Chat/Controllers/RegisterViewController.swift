@@ -6,17 +6,20 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterViewController: UIViewController {
     
     var registerScreen: RegisterScreen?
     var alert:Alert?
+    var auth: Auth?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerScreen?.delegate(delegate: self)
         registerScreen?.configTextFieldDelegate(delegate: self)
         self.alert = Alert(controller: self)
+        self.auth = Auth.auth()
 
     }
     
@@ -30,6 +33,24 @@ class RegisterViewController: UIViewController {
 extension RegisterViewController:RegisterScreenProtocol{
     func actionButtonPressed() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func RegisterButtonPressed() {
+        
+        let email: String = self.registerScreen?.emailTextField.text ?? ""
+        let password: String = self.registerScreen?.passwordTextField.text ?? ""
+        
+        self.auth?.createUser(withEmail: email, password: password, completion: { (resul, error) in
+            
+            if error != nil {
+                self.alert?.getAlert(title: "Attention", message: "error when registering, please check the data and try again")
+            } else {
+                self.alert?.getAlert(title: "Congratulation", message: "user registered successfully", completion: {
+                    
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+        })
     }
 }
 

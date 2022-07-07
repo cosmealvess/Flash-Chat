@@ -5,7 +5,11 @@ target 'Flash Chat' do
 
   # Pods for Flash Chat
 pod 'CLTypingLabel', '~> 0.4.0'
-pod 'FirebaseAuth'
-pod 'FirebaseFirestore'
+
+pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+pod 'FirebaseUI/Storage'
 
 end
