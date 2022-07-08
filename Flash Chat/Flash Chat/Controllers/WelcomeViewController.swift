@@ -6,15 +6,20 @@
 //
 
 import UIKit
+import Firebase
 
 class WelcomeViewController: UIViewController {
     
     var welcomeScreen:WelcomeScreen?
+    var auth:Auth?
+    var alert:Alert?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.welcomeScreen?.delegate(delegate: self)
         welcomeScreen?.configTextFieldDelegate(delegate: self)
+        self.auth = Auth.auth()
+        self.alert = Alert(controller: self)
         
     }
 
@@ -37,10 +42,24 @@ extension WelcomeViewController:WelcomeScreenProtocol{
     }
 
     func loginButtonTapped() {
-        let vc:ChatViewController = ChatViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        guard let login = self.welcomeScreen else {return}
+        self.auth?.signIn(withEmail: login.getEmail(), password: login.getPassword(), completion: { authResult, error in
+            
+            if authResult == nil{
+                self.alert?.getAlert(title: "Attention", message: "We had an unexpected problem, please try again later")
+            }else{
+                let vc = ChatViewController()
+                let navVC = UINavigationController(rootViewController: vc)
+                navVC.modalPresentationStyle = .fullScreen
+                self.present(navVC, animated: true, completion: nil)
+            }
+        })
+        
+        }
+        
     }
-}
+
 
 extension WelcomeViewController:UITextFieldDelegate{
     

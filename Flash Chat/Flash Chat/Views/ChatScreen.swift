@@ -8,6 +8,21 @@
 import UIKit
 
 class ChatScreen: UIView {
+    
+    lazy var messageTextField: UITextField = {
+        let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.autocorrectionType = .no
+        tf.backgroundColor = .white
+        tf.borderStyle = .roundedRect
+        tf.keyboardType = .default
+        tf.autocapitalizationType = .words
+        tf.placeholder = "Write a message:"
+        tf.autocapitalizationType = .words
+        tf.textColor = .darkGray
+        return tf
+        
+    }()
 
     lazy var tableView:UITableView = {
         let tableView = UITableView()
@@ -30,7 +45,8 @@ class ChatScreen: UIView {
     }
     
     func addElements(){
-        addSubview(self.tableView)
+        addSubview(self.messageTextField)
+//        addSubview(self.tableView)
     }
     
     public func configTableViewCells(delegate:UITableViewDelegate, dataSource: UITableViewDataSource){
@@ -45,10 +61,16 @@ class ChatScreen: UIView {
     
     func configConstraints(){
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            messageTextField.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            messageTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            messageTextField.heightAnchor.constraint(equalToConstant: 40),
+            messageTextField.widthAnchor.constraint(equalToConstant: 300),
+
+//            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+//            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+//            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+//            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             
         ])
     }

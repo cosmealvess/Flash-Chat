@@ -40,7 +40,7 @@ extension RegisterViewController:RegisterScreenProtocol{
         let email: String = self.registerScreen?.emailTextField.text ?? ""
         let password: String = self.registerScreen?.passwordTextField.text ?? ""
         
-        self.auth?.createUser(withEmail: email, password: password, completion: { (resul, error) in
+        self.auth?.createUser(withEmail: email, password: password, completion: { authResult, error in
             
             if error != nil {
                 self.alert?.getAlert(title: "Attention", message: "error when registering, please check the data and try again")

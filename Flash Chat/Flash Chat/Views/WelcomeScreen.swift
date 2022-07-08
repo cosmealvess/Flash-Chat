@@ -145,6 +145,14 @@ class WelcomeScreen: UIView {
         passwordTextField.delegate = delegate
     }
     
+    public func getEmail() -> String {
+        return emailTextField.text ?? ""
+    }
+    
+    public func getPassword() -> String {
+        return passwordTextField.text ?? ""
+    }
+    
     private func configConstraints(){
         NSLayoutConstraint.activate([
             
