@@ -16,7 +16,7 @@ protocol WelcomeScreenProtocol: AnyObject {
 class WelcomeScreen: UIView {
     
     private var delegate:WelcomeScreenProtocol?
-    
+   
     func delegate (delegate:WelcomeScreenProtocol?){
         self.delegate = delegate
     }
@@ -139,6 +139,7 @@ class WelcomeScreen: UIView {
     private func configBackGroundColor(){
         self.backgroundColor = UIColor(displayP3Red: 0/255, green: 203/255, blue: 214/255, alpha: 1.0)
     }
+    
     
     public func configTextFieldDelegate(delegate:UITextFieldDelegate){
         emailTextField.delegate = delegate

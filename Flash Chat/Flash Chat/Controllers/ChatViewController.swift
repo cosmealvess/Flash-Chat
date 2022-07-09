@@ -10,10 +10,12 @@ import UIKit
 class ChatViewController: UIViewController {
     
     var chatScreen:ChatScreen?
-
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         chatScreen?.configTableViewCells(delegate: self, dataSource: self)
+//        setup()
         
         
     }
@@ -25,27 +27,25 @@ class ChatViewController: UIViewController {
     }
 }
 
-extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
+extension ChatViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return chatScreen?.messages.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
-        let color:[UIColor] = [.orange, .red, .green, .blue]
-        let cell: UITableViewCell = UITableViewCell()
-        cell.backgroundColor = color[indexPath.row]
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        cell.textLabel?.text = "\(indexPath.row)"
-//        cell.textLabel?.textColor = .black
-//        cell.backgroundColor = .white
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.text = chatScreen?.messages[indexPath.row].body
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
-    
-    
+}
+
+extension ChatViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
 }
 
 

@@ -9,6 +9,15 @@ import UIKit
 
 class ChatScreen: UIView {
     
+    
+    
+    var messages: [Message] = [
+        Message(sender: "1@2.com", body: "hey"),
+        Message(sender: "a@2.com", body: "oi"),
+        Message(sender: "b@2.com", body: "ai")
+    ]
+    
+    
     lazy var messageTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -21,6 +30,26 @@ class ChatScreen: UIView {
         tf.autocapitalizationType = .words
         tf.textColor = .darkGray
         return tf
+        
+    }()
+    
+    lazy var messageButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "sendMessage"), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.setTitleColor(.white, for: .normal)
+        button.tintColor = .white
+        return button
+    }()
+    
+    lazy var logOutButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("LogOut", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.setTitleColor(.white, for: .normal)
+        return button
         
     }()
 
@@ -46,12 +75,15 @@ class ChatScreen: UIView {
     
     func addElements(){
         addSubview(self.messageTextField)
-//        addSubview(self.tableView)
+        addSubview(self.messageButton)
+//        addSubview(self.logOutButton)
+        addSubview(self.tableView)
     }
     
     public func configTableViewCells(delegate:UITableViewDelegate, dataSource: UITableViewDataSource){
         tableView.delegate = delegate
         tableView.dataSource = dataSource
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func configBackGroundColor(){
@@ -62,15 +94,27 @@ class ChatScreen: UIView {
     func configConstraints(){
         NSLayoutConstraint.activate([
             
-            messageTextField.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+//            logOutButton.bottomAnchor.constraint(equalTo: self.logOutButton.topAnchor, constant: 10),
+//            logOutButton.trailingAnchor.constraint(equalTo: self.logOutButton.trailingAnchor, constant: -20),
+            
+            
+            tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.messageTextField.topAnchor, constant: -20),
+            
+            messageTextField.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             messageTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             messageTextField.heightAnchor.constraint(equalToConstant: 40),
             messageTextField.widthAnchor.constraint(equalToConstant: 300),
+            
+            messageButton.centerYAnchor.constraint(equalTo: self.messageTextField.centerYAnchor),
+            messageButton.leadingAnchor.constraint(equalTo: self.messageTextField.trailingAnchor, constant: 10),
+            messageButton.heightAnchor.constraint(equalToConstant: 60),
+            messageButton.widthAnchor.constraint(equalToConstant: 60),
+            
 
-//            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-//            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-//            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-//            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+           
             
         ])
     }
