@@ -15,9 +15,10 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         chatScreen?.configTableViewCells(delegate: self, dataSource: self)
-//        setup()
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func loadView() {

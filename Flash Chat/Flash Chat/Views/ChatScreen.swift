@@ -47,8 +47,8 @@ class ChatScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("LogOut", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        button.setTitleColor(.darkGray, for: .normal)
         return button
         
     }()
@@ -59,8 +59,6 @@ class ChatScreen: UIView {
         tableView.backgroundColor = .white
         return tableView
     }()
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,7 +74,7 @@ class ChatScreen: UIView {
     func addElements(){
         addSubview(self.messageTextField)
         addSubview(self.messageButton)
-//        addSubview(self.logOutButton)
+        addSubview(self.logOutButton)
         addSubview(self.tableView)
     }
     
@@ -94,11 +92,11 @@ class ChatScreen: UIView {
     func configConstraints(){
         NSLayoutConstraint.activate([
             
-//            logOutButton.bottomAnchor.constraint(equalTo: self.logOutButton.topAnchor, constant: 10),
-//            logOutButton.trailingAnchor.constraint(equalTo: self.logOutButton.trailingAnchor, constant: -20),
-            
-            
-            tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            logOutButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 15),
+            logOutButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            logOutButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 170),
+ 
+            tableView.topAnchor.constraint(equalTo: self.logOutButton.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.messageTextField.topAnchor, constant: -20),

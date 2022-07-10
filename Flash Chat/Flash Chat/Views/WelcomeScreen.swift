@@ -48,6 +48,7 @@ class WelcomeScreen: UIView {
         tf.borderStyle = .roundedRect
         tf.keyboardType = .emailAddress
         tf.autocapitalizationType = .none
+        tf.text = "cosme@gmail.com"
         tf.placeholder = "Enter your email:"
         tf.autocapitalizationType = .none
         tf.textColor = .darkGray
@@ -62,6 +63,7 @@ class WelcomeScreen: UIView {
         tf.borderStyle = .roundedRect
         tf.keyboardType = .default
         tf.isSecureTextEntry = true
+        tf.text = "123456"
         tf.placeholder = "Enter your password:"
         tf.textColor = .darkGray
         return tf
