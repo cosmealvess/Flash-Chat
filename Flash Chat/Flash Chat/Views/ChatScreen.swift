@@ -8,9 +8,7 @@
 import UIKit
 
 class ChatScreen: UIView {
-    
-    
-    
+ 
     var messages: [Message] = [
         Message(sender: "1@2.com", body: "hey"),
         Message(sender: "a@2.com", body: "oi"),
@@ -49,6 +47,7 @@ class ChatScreen: UIView {
         button.setTitle("LogOut", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         button.setTitleColor(.darkGray, for: .normal)
+       
         return button
         
     }()
@@ -92,11 +91,10 @@ class ChatScreen: UIView {
     func configConstraints(){
         NSLayoutConstraint.activate([
             
-            logOutButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 15),
-            logOutButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-            logOutButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 170),
+            logOutButton.bottomAnchor.constraint(equalTo: self.tableView.topAnchor),
+            logOutButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
  
-            tableView.topAnchor.constraint(equalTo: self.logOutButton.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30),
             tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.messageTextField.topAnchor, constant: -20),
@@ -110,10 +108,7 @@ class ChatScreen: UIView {
             messageButton.leadingAnchor.constraint(equalTo: self.messageTextField.trailingAnchor, constant: 10),
             messageButton.heightAnchor.constraint(equalToConstant: 60),
             messageButton.widthAnchor.constraint(equalToConstant: 60),
-            
-
-           
-            
+  
         ])
     }
 }

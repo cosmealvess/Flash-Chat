@@ -31,7 +31,7 @@ class RegisterViewController: UIViewController {
 }
 
 extension RegisterViewController:RegisterScreenProtocol{
-    func actionButtonPressed() {
+    func backButtonPressed() {
         navigationController?.popViewController(animated: true)
     }
     

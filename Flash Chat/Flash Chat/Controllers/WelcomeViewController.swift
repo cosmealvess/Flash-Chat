@@ -20,7 +20,6 @@ class WelcomeViewController: UIViewController {
         welcomeScreen?.configTextFieldDelegate(delegate: self)
         self.auth = Auth.auth()
         self.alert = Alert(controller: self)
-        
     }
 
     override func loadView() {
@@ -49,7 +48,7 @@ extension WelcomeViewController:WelcomeScreenProtocol{
             if authResult == nil{
                 self.alert?.getAlert(title: "Attention", message: "We had an unexpected problem, please try again later")
             }else{
-                let vc = ChatViewController()
+                let vc = ChatTableViewController()
                 let navVC = UINavigationController(rootViewController: vc)
                 navVC.modalPresentationStyle = .fullScreen
                 self.present(navVC, animated: true, completion: nil)

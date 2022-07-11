@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RegisterScreenProtocol: AnyObject{
-    func actionButtonPressed()
+    func backButtonPressed()
     func RegisterButtonPressed()
 }
 
@@ -37,7 +37,7 @@ class RegisterScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "back"), for: .normal)
-        button.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.actionBackButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -105,8 +105,8 @@ class RegisterScreen: UIView {
         
     }()
 
-    @objc func backButtonPressed(){
-        self.delegate?.actionButtonPressed()
+    @objc func actionBackButtonPressed(){
+        self.delegate?.backButtonPressed()
     }
     
     @objc func registerButtonPressed(){

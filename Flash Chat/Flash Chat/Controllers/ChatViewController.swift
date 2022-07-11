@@ -10,17 +10,20 @@ import UIKit
 class ChatViewController: UIViewController {
     
     var chatScreen:ChatScreen?
+    
+    var messages: [Message] = [
+        Message(sender: "1@2.com", body: "hey"),
+        Message(sender: "a@2.com", body: "oi"),
+        Message(sender: "b@2.com", body: "ai")
+    ]
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         chatScreen?.configTableViewCells(delegate: self, dataSource: self)
+        
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
+  
     override func loadView() {
         self.chatScreen = ChatScreen()
         self.view = self.chatScreen
@@ -48,5 +51,6 @@ extension ChatViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
+
 
 
