@@ -48,7 +48,7 @@ extension WelcomeViewController:WelcomeScreenProtocol{
             if authResult == nil{
                 self.alert?.getAlert(title: "Attention", message: "We had an unexpected problem, please try again later")
             }else{
-                let vc = ChatTableViewController()
+                let vc = ChatViewController()
                 let navVC = UINavigationController(rootViewController: vc)
                 navVC.modalPresentationStyle = .fullScreen
                 self.present(navVC, animated: true, completion: nil)

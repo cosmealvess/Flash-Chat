@@ -14,6 +14,8 @@ protocol chatTableViewControllerProtocol: AnyObject {
 
 class ChatTableViewController: UITableViewController {
     
+    static let identifier:String = "ChatTableViewControllerIdentifier"
+    
     var delegate: chatTableViewControllerProtocol?
     
     func delegate(delegate:chatTableViewControllerProtocol?){

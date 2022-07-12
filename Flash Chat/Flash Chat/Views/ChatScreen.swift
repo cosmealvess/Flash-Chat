@@ -40,17 +40,6 @@ class ChatScreen: UIView {
         button.tintColor = .white
         return button
     }()
-    
-    lazy var logOutButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("LogOut", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-        button.setTitleColor(.darkGray, for: .normal)
-       
-        return button
-        
-    }()
 
     lazy var tableView:UITableView = {
         let tableView = UITableView()
@@ -73,7 +62,6 @@ class ChatScreen: UIView {
     func addElements(){
         addSubview(self.messageTextField)
         addSubview(self.messageButton)
-        addSubview(self.logOutButton)
         addSubview(self.tableView)
     }
     
@@ -90,10 +78,7 @@ class ChatScreen: UIView {
     
     func configConstraints(){
         NSLayoutConstraint.activate([
-            
-            logOutButton.bottomAnchor.constraint(equalTo: self.tableView.topAnchor),
-            logOutButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
- 
+           
             tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30),
             tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),

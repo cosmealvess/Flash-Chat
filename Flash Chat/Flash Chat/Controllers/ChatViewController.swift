@@ -21,7 +21,14 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         chatScreen?.configTableViewCells(delegate: self, dataSource: self)
+        setupNavigationBar()
         
+    }
+    
+    func setupNavigationBar(){
+        navigationItem.title = "Flash Chat"
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 0/255, green: 203/255, blue: 214/255, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
     }
   
     override func loadView() {
