@@ -28,8 +28,8 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         chatScreen?.configTableViewCells(delegate: self, dataSource: self)
         setupNavigationBar()
-        
-        
+
+   
     }
     
     func setupNavigationBar(){
@@ -41,10 +41,13 @@ class ChatViewController: UIViewController {
         logOut.tintColor = .black
         navigationItem.rightBarButtonItems = [logOut]
  
+ 
     }
+
+    
     @objc func logOutPressed() {
         self.delegate?.logOutButton()
-      
+        
     }
     
     override func loadView() {
