@@ -15,7 +15,6 @@ class ChatScreen: UIView {
         Message(sender: "b@2.com", body: "ai")
     ]
     
-    
     lazy var messageTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +58,8 @@ class ChatScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
     func addElements(){
         addSubview(self.messageTextField)
         addSubview(self.messageButton)
@@ -74,7 +75,6 @@ class ChatScreen: UIView {
     private func configBackGroundColor(){
         self.backgroundColor = UIColor(displayP3Red: 0/255, green: 203/255, blue: 214/255, alpha: 1.0)
     }
-    
     
     func configConstraints(){
         NSLayoutConstraint.activate([
