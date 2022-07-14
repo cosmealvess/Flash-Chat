@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MessageCell: UITableViewCell {
+class UserDetailTableViewCell: UITableViewCell {
     
-    static let identifier:String = "MessageCell"
+    static let identifier:String = "UserDetailTableViewCell"
     
     lazy var UserImageView: UIImageView = {
         let image = UIImageView()

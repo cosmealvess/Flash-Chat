@@ -44,6 +44,7 @@ class ChatScreen: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
+        tableView.register(UserDetailTableViewCell.self, forCellReuseIdentifier: UserDetailTableViewCell.identifier)
         return tableView
     }()
     
@@ -57,8 +58,6 @@ class ChatScreen: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     
     func addElements(){
         addSubview(self.messageTextField)
